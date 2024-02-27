@@ -1,0 +1,11 @@
+namespaces:
+- author:
+  - Saskia
+  contact:
+  - my_email@example.com
+  doc: Extension for Allen Institute Neural Dynamics
+  name: ndx-aind-metadata
+  schema:
+  - namespace: core
+  - source: ndx-aind-metadata.extensions.yaml
+  version: 0.1.0
