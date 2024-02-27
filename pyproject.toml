@@ -34,6 +34,8 @@ keywords = [
 dependencies = [
     "pynwb>=2.5.0",
     "hdmf>=3.10.0",
+    "aind_data_schema",
+    "jsonschema",
 ]
 
 # TODO: add URLs before release
