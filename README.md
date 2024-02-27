@@ -1,6 +1,7 @@
 # ndx-aind-metadata Extension for NWB
 
-Extension for Allen Institute Neural Dynamics
+Extension for Allen Institute Neural Dynamics to store metadata as specified
+by the [AIND Data Schema](https://github.com/AllenNeuralDynamics/aind-data-schema).
 
 ## Installation
 
