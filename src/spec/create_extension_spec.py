@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 import os.path
 
-from pynwb.spec import NWBNamespaceBuilder, export_spec, NWBGroupSpec, NWBAttributeSpec
-
-# TODO: import other spec classes as needed
-# from pynwb.spec import NWBDatasetSpec, NWBLinkSpec, NWBDtypeSpec, NWBRefSpec
+from pynwb.spec import NWBNamespaceBuilder, export_spec, NWBGroupSpec, NWBDatasetSpec
 
 
 def main():
@@ -21,23 +18,49 @@ def main():
         ],
     )
     ns_builder.include_namespace("core")
-    
-    # TODO: if your extension builds on another extension, include the namespace
-    # of the other extension below
-    # ns_builder.include_namespace("ndx-other-extension")
 
-    # TODO: define your new data types
     # see https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html
     # for more information
-    tetrode_series = NWBGroupSpec(
-        neurodata_type_def="TetrodeSeries",
-        neurodata_type_inc="ElectricalSeries",
-        doc="An extension of ElectricalSeries to include the tetrode ID for each time series.",
-        attributes=[NWBAttributeSpec(name="trode_id", doc="The tetrode ID.", dtype="int32")],
+    aind_subject = NWBGroupSpec(
+        neurodata_type_def="AindSubject",
+        neurodata_type_inc="Subject",
+        doc="Subject with AIND metadata",
+        datasets=[
+            NWBDatasetSpec(
+                name="aind_schema_json",
+                doc="json of subject metadata",
+                dtype="text",
+                shape=None,
+                quantity=1,
+            )
+        ],
     )
 
-    # TODO: add all of your new data types to this list
-    new_data_types = [tetrode_series]
+    lab_metadata_classes = [
+        NWBGroupSpec(
+            neurodata_type_def=f"Aind{x}",
+            neurodata_type_inc="LabMetaData",
+            doc=f"{x} with AIND metadata",
+            datasets=[
+                NWBDatasetSpec(
+                    name="aind_schema_json",
+                    doc="json of session metadata",
+                    dtype="text",
+                    shape=None,
+                    quantity=1,
+                )
+            ],
+        ) for x in (
+            "Acquisition",
+            "DataDescription",
+            "Procedures",
+            "Processing",
+            "Rig",
+            "Session",
+        )
+    ]
+
+    new_data_types = [aind_subject] + lab_metadata_classes
 
     # export the spec to yaml files in the spec folder
     output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "spec"))

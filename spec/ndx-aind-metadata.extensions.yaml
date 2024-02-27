@@ -1,8 +1,50 @@
 groups:
-- neurodata_type_def: TetrodeSeries
-  neurodata_type_inc: ElectricalSeries
-  doc: An extension of ElectricalSeries to include the tetrode ID for each time series.
-  attributes:
-  - name: trode_id
-    dtype: int32
-    doc: The tetrode ID.
+- neurodata_type_def: AindSubject
+  neurodata_type_inc: Subject
+  doc: Subject with AIND metadata
+  datasets:
+  - name: aind_schema_json
+    dtype: text
+    doc: json of subject metadata
+- neurodata_type_def: AindAcquisition
+  neurodata_type_inc: LabMetaData
+  doc: Acquisition with AIND metadata
+  datasets:
+  - name: aind_schema_json
+    dtype: text
+    doc: json of session metadata
+- neurodata_type_def: AindDataDescription
+  neurodata_type_inc: LabMetaData
+  doc: DataDescription with AIND metadata
+  datasets:
+  - name: aind_schema_json
+    dtype: text
+    doc: json of session metadata
+- neurodata_type_def: AindProcedures
+  neurodata_type_inc: LabMetaData
+  doc: Procedures with AIND metadata
+  datasets:
+  - name: aind_schema_json
+    dtype: text
+    doc: json of session metadata
+- neurodata_type_def: AindProcessing
+  neurodata_type_inc: LabMetaData
+  doc: Processing with AIND metadata
+  datasets:
+  - name: aind_schema_json
+    dtype: text
+    doc: json of session metadata
+- neurodata_type_def: AindRig
+  neurodata_type_inc: LabMetaData
+  doc: Rig with AIND metadata
+  datasets:
+  - name: aind_schema_json
+    dtype: text
+    doc: json of session metadata
+- neurodata_type_def: AindSession
+  neurodata_type_inc: LabMetaData
+  doc: Session with AIND metadata
+  datasets:
+  - name: aind_schema_json
+    dtype: text
+    doc: json of session metadata
