@@ -22,10 +22,11 @@ from ndx_aind_metadata import (
 from pynwb import NWBFile, NWBHDF5IO
 from pathlib import Path
 
+nwbfile_kwargs = extract_nwbfile_kwargs(subject_metadata, rig_metadata, procedure_metadata)
+
 nwbfile = NWBFile(
     session_description="test",
-    identifier="test",
-    session_start_time=datetime.datetime.now(),
+    **nwbfile_kwargs
 )
 
 data_dir = Path("/Users/bendichter/Downloads")
